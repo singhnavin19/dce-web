@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title>Dynamic Computer Education</title>  
+	<link rel="stylesheet" src="$!baeUrl/resources/css/dceStyle.css"/>
+	<link rel="icon" href="$!baeUrl/resources/css/images/LOGO.png">
+</head>
+<body>
+	#if(!$noHeader)
+		<div>
+			#parse("header.vm")
+		</div>
+	#end	
+
+	<div>
+		$screen_content
+	</div>
+	
+	#if(!$noFooter)	
+		<div style="background: #E0E0E0; text-align: center; padding: 5px; margin-bottom: 10px;">
+			#parse("footer.vm")
+		</div>  
+	#end	
+</body>
+</html>

@@ -1,0 +1,82 @@
+#macro(studentFrom $formType,$formMessage)
+<style>
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+</style>
+
+<form action=$formType method="post">
+
+<table style="margin-left: 13px;margin-top: 0px;line-height: 2;">
+				<th style="color:green">$!formMessage</th><br>
+						<tr>
+							<td>Name : </td>
+							<td><input type="text" name="fname" value="$!studentenquiry.fname" placeholder="First Name" maxlength="25"></td>
+							<td><input type="text" name="mname" value="$!studentenquiry.mname" placeholder="Middle Name" maxlength="25"></td>
+							<td><input type="text" name="lname" value="$!studentenquiry.lname" placeholder="Last Name" maxlength="25"></td>
+						</tr>
+						<tr>
+							<td>Gender : </td>
+							<td><input type="radio" name="gender" #if ($!studentenquiry.gender=='M') checked #end value="M">Male
+								<input type="radio" name="gender" #if ($!studentenquiry.gender=='F') checked #end value="F">Female </td>
+						</tr>
+						<tr>
+							<td>Qualification : </td>
+							<td><input type="text" name="qualification" value="$!studentenquiry.qualification" maxlength="25"></td>
+						</tr>
+						<tr>
+							<td>Profession : </td>
+							<td><select name="Profession">
+							  <option value="0"></option>
+							  <option  #if ($!studentenquiry.profession==1) selected #end value="1">Student</option>
+							  <option  #if ($!studentenquiry.profession==2) selected #end value="2">Buisness</option>
+							  <option  #if ($!studentenquiry.profession==3) selected #end value="3">Service</option>
+							   <option #if ($!studentenquiry.profession==4) selected #end value="4">Other</option>
+							</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Address : </td>
+							<td colspan="3"><textarea style="margin: 0px; width: 347px; height: 118px;" name="address" value="$!studentenquiry.address" row="4" cols="25">$!studentenquiry.address</textarea>
+						</tr>
+						<tr>
+							<td>Mobile No : </td>
+							<td><input type="text" name="mobileNo" value="$!studentenquiry.mobileNo" maxlength="10"></td>
+						</tr>
+						<tr>
+							<td>E-mail ID :</td>
+							<td><input type="email" name="emailID" value="$!studentenquiry.emailID" maxlength="35"></td>
+						</tr>
+						#if(!$!admission)
+						<tr>
+							<td>Course :</td>
+							<td><input type="text" name="course" value="$!studentenquiry.course" maxlength="45"></td>
+						</tr>
+						<tr style="border-bottom:1px solid black"><td colspan="12"><hr/> </td></tr>
+						 <tr>  
+						   <td>For Office Use Only</td>
+						</tr>
+						<tr>
+							<td>Fees :</td>
+							<td><input type="text" name="fess" value="$!studentenquiry.fess" maxlength="25"></td>
+						</tr>
+						#end
+						<tr>
+							<td><input type="submit" name="save" value="save"></td>
+						</tr>
+
+						
+</table>			    
+</form>
+#end

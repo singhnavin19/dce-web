@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="$baeUrl/resources/css/dceStyle.css"/>
+<th style="color:green">$!message</th><br>
+
+<form action="searchStudentByTempID" method="POST">
+	<table id="tabel">
+		<tr>
+			<td>Temp ID:</td><td><input type="text" name="tempID"  maxlength="25"></td>
+			<td style="display:none"><input type="hidden" name="fname"  value="dceForm"></td>
+			<td style="display:none"><input type="submit" name="save" value="search" ></td>
+		</tr>
+	<table>
+</form>
+
+<table style="margin-top:0px">
+#foreach($students in $listStudents)
+<tr>
+	<td><a href="searchStudentByTempID?tempID=$!students.tempID">$!students.fname $!students.mname $!students.lname</a></td> 
+	<td>($!students.mobileNo)</td>
+</tr>	 
+#end
+</table>
+</br>
+<a href="admissionForm">Direct Admission</a>
+
+
+
+
