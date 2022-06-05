@@ -1,13 +1,13 @@
 <link rel="stylesheet" href="$baeUrl/resources/css/dceStyle.css"/>
-#if($!studentAttendanceReport.check_in_datetime==$null)
-		    #set($disableCheck_out="disabled")
-#end
-#if($!studentAttendanceReport.check_out_datetime!=$null)
-		    #set($disableCheck_out="disabled")
-#end
 #if($!studentAttendanceReport.check_in_datetime!=$null)
-		    #set($disableCheck_in="disabled")
+	#set($disableCheck_in="disabled")
+	#set($isCheckin="False")
 #end
+
+#if($!studentAttendanceReport.check_out_datetime!=$null || $!studentAttendanceReport.check_in_datetime==$null)
+	#set($disableCheck_out="disabled")
+	#set($isCheckin="True")
+#end	
 <style>
 
 body{
@@ -27,14 +27,13 @@ td {
 	padding: 15px ;
 }
 </style>
-<form action="status" method="POST">
+<form action="status" method="GET">
+	<input type="hidden" name="isCheckin" value="$!isCheckin"> 
 	<table id="input">
 	     <tr>
 	       <td style="display:none"><input type="hidden" name="fullName" value="$!studentAttendanceReport.fullName"></td>
 	       <td style="display:none"><input type="hidden" name="course" value="$!studentAttendanceReport.course"></td>
-	       <td style="display:none"><input type="hidden" name="attendece_date" value="$!dateUtils.dateToString($!studentAttendanceReport.attendece_date)"></td>
-	       <td style="display:none"><input type="hidden" name="check_in_datetime" value="$!dateUtils.dateToString($!studentAttendanceReport.check_in_datetime,'dd/MM/YYYY hh:mm a')"></td>
-	       <td style="display:none"><input type="hidden" name="check_out_datetime" value="$!dateUtils.dateToString($!studentAttendanceReport.check_out_datetime,'dd/MM/YYYY hh:mm a')"></td>
+	       
 	    </tr>
 	    <tr>
 			<td>Enter your ID:</td>

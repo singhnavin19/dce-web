@@ -23,9 +23,9 @@
 	   	</tr>
 	   	 <tr>
 	   		#if(!$isUpdate)
-	   			<td><input style="width:100%;height:100%" type="submit" name="save" value="save"></td>
+	   			<td><input style="width:100;height:50" type="submit" name="save" value="save"></td>
 	   		#else
-		   		<td><input style="width:100%;height:100%" type="submit" name="save" value="update"></td>
+		   		<td><input  style="width:100;height:50" type="submit" name="save" value="update"></td>
 	   		#end
 	   	</tr>
 </table>   	

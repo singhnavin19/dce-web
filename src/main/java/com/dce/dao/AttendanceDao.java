@@ -62,17 +62,18 @@ public class AttendanceDao {
 	}
 
 	public void updateDailyAttendance(Attendance studentAttendance) {
-		StringBuffer query = new StringBuffer();
-		query.append("update tattendance_daily ");
-		if (studentAttendance.getCheck_in_datetime() == null)
-			query.append("set check_in_datetime=SYSDATE() ");
-		else
-			query.append("set check_out_datetime=SYSDATE() ");
-
-		query.append(" where uid=:uid ");
-		query.append("and DATE_FORMAT(attendece_date, '%d/%m/%Y')=DATE_FORMAT(SYSDATE(), '%d/%m/%Y') ");
 		Map<String, Object> inputparam = new HashMap<String, Object>();
 		inputparam.put("uid", studentAttendance.getUid());
+
+		StringBuffer query = new StringBuffer();
+
+		query.append("update tattendance_daily ");
+		if (studentAttendance.getIsCheckin() != null && studentAttendance.getIsCheckin()) {
+			query.append("set check_in_datetime=SYSDATE() ");
+		} else {
+			query.append("set check_out_datetime=SYSDATE() ");
+		}
+		query.append(" where uid=:uid ");
 
 		this.namedParameterJdbcTemplate.update(query.toString(), inputparam);
 	}

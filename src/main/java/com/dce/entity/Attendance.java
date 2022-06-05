@@ -8,10 +8,22 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Attendance implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private String uid, fullName, course;
+
+	private String uid;
+	private String fullName;
+	private String course;
+
 	@DateTimeFormat(pattern = "dd/MM/YYYY hh:mm a")
-	private Date attendece_date, check_in_datetime, check_out_datetime;
+	private Date attendece_date;
+
+	@DateTimeFormat(pattern = "dd/MM/YYYY hh:mm a")
+	private Date check_in_datetime;
+
+	@DateTimeFormat(pattern = "dd/MM/YYYY hh:mm a")
+	private Date check_out_datetime;
+
 	private String message;
+	private Boolean isCheckin;
 
 	public String getUid() {
 		return this.uid;
@@ -79,6 +91,14 @@ public class Attendance implements Serializable {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public Boolean getIsCheckin() {
+		return this.isCheckin;
+	}
+
+	public void setIsCheckin(Boolean isCheckin) {
+		this.isCheckin = isCheckin;
 	}
 
 }
